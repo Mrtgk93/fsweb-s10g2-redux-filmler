@@ -4,7 +4,7 @@ import movieReducer from "./movieReducer";
 import favReducer from "./favReducer";
 
 const rootReducer = combineReducers({
-  movie: movieReducer,
-  fav: favReducer,
+  movieReducer,
+  favReducer,
 });
-export default movieReducer;
+export default rootReducer;

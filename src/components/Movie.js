@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { deleteMovie } from "../actions/movieActions";
 
 import { useDispatch, useSelector } from "react-redux";
+import { addFavorite } from "../actions/favoritesActions";
 
 const Movie = (props) => {
   const { id } = useParams();
@@ -10,7 +11,7 @@ const Movie = (props) => {
 
   const dispatch = useDispatch();
 
-  const movies = useSelector((depo) => depo.movies);
+  const movies = useSelector((depo) => depo.movieReducer.movies);
   const movie = movies.find((movie) => movie.id === Number(id));
 
   function handleChange() {
@@ -52,7 +53,10 @@ const Movie = (props) => {
         >
           Sil
         </button>
-        <button className="myButton bg-blue-600 hover:bg-blue-500 ">
+        <button
+          onClick={() => dispatch(addFavorite(movie))}
+          className="myButton bg-blue-600 hover:bg-blue-500 "
+        >
           Favorilere ekle
         </button>
       </div>
